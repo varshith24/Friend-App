@@ -1,5 +1,7 @@
 import React from 'react'
-import img from '../photos/logo.png'
+import img from '../photos/loo.png'
+import { AddFriend } from './AddFriend'
+
 export const NavBar = ({ darkMode, setDark }) => {
     return (
 
@@ -10,13 +12,19 @@ export const NavBar = ({ darkMode, setDark }) => {
                     Bootstrap
                 </a>
                 <div className="ms-auto">
-                    <button type='button' className={`btn btn-${!darkMode ? "light" : "dark"} btn-outline-dark custom-btn`}
-                        onClick={() => {
-                            setDark(!darkMode)
-                        }}
-                    >
-                        {darkMode ? <i class="fa-solid fa-sun" style={{ color: "#fff" }}></i> : <i class="fa-solid fa-moon"></i>}
-                    </button>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <div>
+                            <AddFriend darkMode={darkMode} />
+                        </div>
+                        <button style={{ marginLeft: '10px' }} type='button' className={`btn btn-${!darkMode ? "light" : "dark"} btn-outline-dark custom-btn`}
+                            onClick={() => {
+                                setDark(!darkMode)
+                            }}
+                        >
+                            {darkMode ? <i className="fa-solid fa-sun" style={{ color: "#fff" }}></i> : <i className="fa-solid fa-moon"></i>}
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </nav>
