@@ -1,7 +1,6 @@
 .card-img-top {
   border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  height: 180px; /* Adjust the height as needed */
+  border-top-right-radius: 15px; /* Adjust the height as needed */
   object-fit: cover;
 }
 .img-fluid {
@@ -23,9 +22,10 @@
 }
 
 .card:hover {
-  transform: scale(1.05);
+  /* transform: scale(1.1); */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
 }
 .data {
   padding: 20px;
 }
+/* Check and remove any hover blur styles */
