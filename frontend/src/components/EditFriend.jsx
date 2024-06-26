@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Friend from '../routes/Friend';
 
 export const EditFriend = ({ darkMode, data, index }) => {
     const [name, setName] = useState(data.name);
@@ -24,7 +25,14 @@ export const EditFriend = ({ darkMode, data, index }) => {
     const handleSave = () => {
         // Handle save logic here
         // Possibly send updated data to parent component or server
-        console.log({ name, role, description, gender });
+        const id = data.id
+        const user = { name, role, description, gender, id };
+        try {
+            Friend.updateFriend(user)
+        }
+        catch (e) {
+            console.log(e)
+        }
     };
 
     return (
@@ -62,7 +70,7 @@ export const EditFriend = ({ darkMode, data, index }) => {
                                             id={`name-${index}`}
                                             placeholder="John Doe"
                                             value={name}
-                                            onChange={handleChange}
+                                            onChange={(e) => setName(e.target.value)}
                                         />
                                     </div>
                                     <div className="mb-3">
@@ -73,7 +81,7 @@ export const EditFriend = ({ darkMode, data, index }) => {
                                             id={`role-${index}`}
                                             placeholder="Developer"
                                             value={role}
-                                            onChange={handleChange}
+                                            onChange={(e) => { setRole(e.target.value) }}
                                         />
                                     </div>
                                 </div>
@@ -85,7 +93,7 @@ export const EditFriend = ({ darkMode, data, index }) => {
                                         rows="3"
                                         placeholder="Experienced full-stack developer."
                                         value={description}
-                                        onChange={handleChange}
+                                        onChange={(e) => { setDescription(e.target.value) }}
                                     ></textarea>
                                 </div>
                                 <div className="mb-3">
@@ -94,7 +102,7 @@ export const EditFriend = ({ darkMode, data, index }) => {
                                         className={`form-select ${darkMode ? 'bg-dark text-light' : 'bg-light text-dark'}`}
                                         id={`gender-${index}`}
                                         value={gender}
-                                        onChange={handleChange}
+                                        onChange={(e) => { setGender(e.target.value) }}
                                     >
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>

@@ -29,6 +29,7 @@ def create_friend():
         role = data.get("role")
         description = data.get("description")
         gender = data.get("gender")
+        gender = gender.lower()
 
         if gender == "male":
             img_url = f"https://avatar.iran.liara.run/public/boy?username={name}"
@@ -74,11 +75,22 @@ def update_friend(id):
             return jsonify({"error" : f"Friend not Found"}), 404
         
         data = request.json
-
+        gender = data.get("gender")
+        name = data.get("name")
         friend.name = data.get("name",friend.name)
         friend.role = data.get("role",friend.role)
         friend.gender = data.get("gender",friend.gender)
         friend.description = data.get("description",friend.description)
+        if gender == "male":
+            img_url = f"https://avatar.iran.liara.run/public/boy?username={name}"
+            friend.img_url = img_url
+        elif gender == "female":
+            img_url = f"https://avatar.iran.liara.run/public/girl?username={name}"
+            friend.img_url = img_url
+        else:
+            img_url = None
+        # print(friend.gender)
+        # print(friend.img_url)
         db.session.commit()
         return jsonify(friend.to_json()),200
     except Exception as e:

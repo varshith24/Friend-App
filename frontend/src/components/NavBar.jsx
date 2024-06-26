@@ -9,7 +9,8 @@ export const NavBar = ({ darkMode, setDark }) => {
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">
                     <img src={img} alt="" width="30" height="24" className="d-inline-block align-text-top" style={{ marginRight: "10px" }} />
-                    Bootstrap
+                    {/* Bootstrap */}
+                    FriendHub
                 </a>
                 <div className="ms-auto">
                     <div style={{ display: 'flex', alignItems: 'center' }}>
